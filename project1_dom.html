@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project_Dom 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: "poppins", sans-serif;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        background-color: skyblue;
+        gap: 2rem;
+        
+      }
+      .container {
+        width: 23rem;
+        height: 60%;
+        background-color: wheat;
+        padding: 2rem;
+        border-radius: 1rem;
+        text-align: center;
+        position: relative;
+        
+      }
+      .container img {
+        height: 58%;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: 0.4rem;
+      }
+      .container button {
+        padding: 0.8rem 1.5rem;
+        background-color: skyblue;
+        outline: none;
+        border: 0;
+        font-family: "poppins", sans-serif;
+        border-radius: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 18px;
+      }
+      #add-btn-dropdown{
+        background-color: beige;
+        border: 1px solid bisque;
+        height: 9rem;
+        position: absolute;
+        right: -4rem;
+        top: 95%;
+        width: 70%;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        display: none;
+        
+             
+
+      }
+      #add-btn-dropdown ul{
+        text-align: start;
+        height: 100%;
+        width: 100%;
+        
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      #add-btn-dropdown ul li{
+        list-style: none;
+        width: 100%;
+        padding: 5px;
+        border-radius: 3px;
+        font-size: 15px;
+        
+
+      }
+      #add-btn-dropdown ul li:hover{
+        background-color: rgb(250, 228, 200);
+        cursor: pointer;
+
+      }
+      .message{
+        position: absolute;
+        left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="font-size: 30px; font-weight: 800; color: brown; margin: -100px 0px 20px 0px;">Click one to add friend and click again to remove , unfollow or block your friend</h1>
+   
+    <div class="container">
+      <img src="images/women.jpg" alt="image" /><br />
+      <h1>Georgina Xin</h1>
+      <h2 style="color: red; margin: 1rem 0 1rem 0">
+        Photographer
+      </h2>
+      <button id="add-friend">Follow</button>
+      <div id="add-btn-dropdown">
+        <ul>
+            <li id="unfollow">Unfollow</li>
+            
+            <li id="block">Block</li>
+        </ul>
+    </div>
+    </div>
+   
+    <script>
+      
+      const addFriend = document.getElementById("add-friend");
+      const addBtnDropdown = document.getElementById('add-btn-dropdown')
+      let check = 2;
+      addFriend.addEventListener("click", () => {
+        if (check % 2==0) {
+          
+          addFriend.innerHTML = "Following 👍";
+          addFriend.style.backgroundColor = "lightgreen";
+          check+=1
+          console.log(check);
+          addBtnDropdown.style.display = "none";
+        }
+        else{
+            addBtnDropdown.style.display = "block";
+            check+=1
+            console.log(check);
+        }
+      });
+      
+
+      document.getElementById('block').addEventListener('click',()=>{
+        addFriend.innerHTML = "Blocked";
+        addFriend.style.backgroundColor = 'red';
+        addBtnDropdown.style.display = "none";
+      })
+
+      document.getElementById('unfollow').addEventListener('click',()=>{
+        addFriend.innerHTML = "Follow";
+        addFriend.style.backgroundColor = "skyblue";
+        addBtnDropdown.style.display = "none";
+      })
+    
+    </script>
+  </body>
+</html>
